@@ -121,16 +121,6 @@ def render_login_page():
                 st.error("❌ Invalid username or password")
                 if st.session_state.login_attempts >= 3:
                     st.warning("⚠️ Too many failed attempts. Please try again later.")
-        
-        st.markdown("---")
-        st.markdown(
-            """
-            **Demo Credentials:**
-            - Username: `admin` | Password: `AquaForge@2026`
-            - Username: `engineer` | Password: `Design@AWH2026`
-            """,
-            unsafe_allow_html=True,
-        )
     
     return False
 
