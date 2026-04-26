@@ -34,10 +34,7 @@ from help_content import (
     BRAND_NAME, BRAND_TAGLINE, BRAND_DESCRIPTION,
     GETTING_STARTED, FAQ, MODULES_GUIDE, GLOSSARY, TIPS_AND_TRICKS
 )
-from help_content import (
-    BRAND_NAME, BRAND_TAGLINE, BRAND_DESCRIPTION,
-    GETTING_STARTED, FAQ, MODULES_GUIDE, GLOSSARY, TIPS_AND_TRICKS
-)
+from login_system import check_authentication, render_logout_button
 
 # ============================================================================
 # PAGE CONFIGURATION
@@ -49,6 +46,13 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# ============================================================================
+# AUTHENTICATION CHECK - MUST BE FIRST
+# ============================================================================
+
+if not check_authentication():
+    st.stop()
 
 # ============================================================================
 # SESSION STATE INITIALIZATION
@@ -177,6 +181,9 @@ st.markdown(f'<div class="subtitle">{BRAND_TAGLINE} | {BRAND_DESCRIPTION[:80]}..
 
 # Sidebar
 with st.sidebar:
+    # Logout button and user info
+    render_logout_button()
+    
     st.markdown("### 🎛️ Project Management")
     
     # Project name
